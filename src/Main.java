@@ -15,5 +15,8 @@ public class Main {
         // Сапер
         // Minesweeper.Play();
 
+        // Спираль
+        Spiral.CreateSpiralArray();
+
     }
 }

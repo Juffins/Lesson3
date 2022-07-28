@@ -14,6 +14,8 @@ public class Minesweeper {
         String[][] field = new String[countOfRows][countOfCols];
         int currentRowsCoordinates;
         int currentColsCoordinates;
+        String mine = "*";
+        String emptyCell = ".";
 
         System.out.println("In the next " + countOfMines + " lines, enter the location of the mines.");
         for(int i = 0; i < countOfMines; i++){
@@ -25,7 +27,7 @@ public class Minesweeper {
                 i--;
                 continue;
             }
-            field[currentRowsCoordinates][currentColsCoordinates] = "*";
+            field[currentRowsCoordinates][currentColsCoordinates] = mine;
         }
 
         int currentCountSurroundingMines;
@@ -33,50 +35,50 @@ public class Minesweeper {
             for(int c = 0; c < countOfCols; c++){
                 currentCountSurroundingMines = 0;
 
-                if(field[r][c] != "*"){
+                if(!field[r][c].equals(mine)){
                     try{
-                        if(field[r - 1][c - 1] == "*") currentCountSurroundingMines++; //Проверка левой верхней ячейки на наличие мины
+                        if(field[r - 1][c - 1].equals(mine)) currentCountSurroundingMines++; //Проверка левой верхней ячейки на наличие мины
                     }catch (Exception e){
                         System.out.print("Out of bounds.\t");
                     }
                     try{
-                        if(field[r - 1][c] == "*") currentCountSurroundingMines++; //Проверка ячейки сверху
+                        if(field[r - 1][c].equals(mine)) currentCountSurroundingMines++; //Проверка ячейки сверху
                     }catch (Exception e){
                         System.out.print("Out of bounds.\t");
                     }
                     try{
-                        if(field[r - 1][c + 1] == "*") currentCountSurroundingMines++; //Проверка правой верхней ячейки
+                        if(field[r - 1][c + 1].equals(mine)) currentCountSurroundingMines++; //Проверка правой верхней ячейки
                     }catch (Exception e){
                         System.out.print("Out of bounds.\t");
                     }
                     try{
-                        if(field[r][c - 1] == "*") currentCountSurroundingMines++; //Проверка ячейки слева
+                        if(field[r][c - 1].equals(mine)) currentCountSurroundingMines++; //Проверка ячейки слева
                     }catch (Exception e){
                         System.out.print("Out of bounds.\t");
                     }
                     try{
-                        if(field[r][c + 1] == "*") currentCountSurroundingMines++; //Проверка ячейки справа
+                        if(field[r][c + 1].equals(mine)) currentCountSurroundingMines++; //Проверка ячейки справа
                     }catch (Exception e){
                         System.out.print("Out of bounds.\t");
                     }
                     try{
-                        if(field[r + 1][c - 1] == "*") currentCountSurroundingMines++; //Проверка нижней левой ячейки
+                        if(field[r + 1][c - 1].equals(mine)) currentCountSurroundingMines++; //Проверка нижней левой ячейки
                     }catch (Exception e){
                         System.out.print("Out of bounds.\t");
                     }
                     try{
-                        if(field[r + 1][c] == "*") currentCountSurroundingMines++; //Проверка нижней ячейки
+                        if(field[r + 1][c].equals(mine)) currentCountSurroundingMines++; //Проверка нижней ячейки
                     }catch (Exception e){
                         System.out.print("Out of bounds.\t");
                     }
                     try{
-                        if(field[r + 1][c + 1] == "*") currentCountSurroundingMines++; //Проверка нижней правой ячейки
+                        if(field[r + 1][c + 1].equals(mine)) currentCountSurroundingMines++; //Проверка нижней правой ячейки
                     }catch (Exception e){
                         System.out.print("Out of bounds.\t");
                     }
 
                     if(currentCountSurroundingMines == 0){
-                        field[r][c] = ".";
+                        field[r][c] = emptyCell;
                     }
                     else{
                         field[r][c] = String.valueOf(currentCountSurroundingMines);
