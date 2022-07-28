@@ -11,5 +11,9 @@ public class Main {
 
         // Бинарный поиск
         // BinarySearch.Search();
+
+        // Сапер
+        // Minesweeper.Play();
+
     }
 }
